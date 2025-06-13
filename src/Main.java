@@ -1,44 +1,54 @@
-class Animal{
-    public void makeSound(){
-        System.out.println();
-    }
+abstract class Shape{
+    abstract double area();
 }
 
-class Dog extends Animal{
-    @Override
-    public void makeSound(){
-        System.out.println("멍멍");
+class Circle extends Shape{
+    private int radius;
+
+    public Circle(int radius){
+        this.radius = radius;
     }
+
+    @Override
+    public double area(){
+        return radius * radius * Math.PI;
+    }
+
+//    public void area(){
+//        double result =  radius * radius * Math.PI;
+//        System.out.println("Circle Area : " + result);
+//    }
 }
 
-class Cat extends Animal{
-    @Override
-    public void makeSound(){
-        System.out.println("야옹");
-    }
-}
+class Rectangle extends Shape{
+    private int width, height;
 
-class Tiger extends Animal{
-    @Override
-    public void makeSound(){
-        System.out.println("어흥");
+    public Rectangle(int width, int height){
+        this.width = width;
+        this.height = height;
     }
+
+    @Override
+    public double area() {
+        return width * height;
+    }
+
+//    public void area(){
+//        double result =  width * height
+//        System.out.println("Rectangle Area : " + result);
+//    }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Animal a1 = new Dog();
-        Animal a2 = new Cat();
-        Animal a3 = new Tiger();
+        Shape[] shapes = new Shape[2];
 
-//        a1.makeSound();
-//        a2.makeSound();
-//        a3.makeSound();
+        shapes[0] = new Circle(3);
+        shapes[1] = new Rectangle(4, 5);
 
-        Animal[] animals = {a1, a2, a3};
-
-        for (Animal animal : animals) {
-            animal.makeSound();
+        for (Shape shape : shapes) {
+            System.out.println(shape.area());
+            // shape.area();
         }
 
     }
