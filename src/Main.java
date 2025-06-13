@@ -1,10 +1,14 @@
-interface Animal{
-    void makeSound();
+abstract class Animal{
+    abstract void makeSound();
+
+    public void sleep(){
+        System.out.println("드르렁");
+    }
 }
 
-class Dog implements Animal {
+class Dog extends Animal{
     @Override
-    public void makeSound(){
+    void makeSound(){
         System.out.println("멍멍");
     }
 }
@@ -14,5 +18,6 @@ public class Main {
         Animal dog = new Dog();
 
         dog.makeSound();
+        dog.sleep();
     }
 }
